@@ -23,8 +23,4 @@ app.listen(app.get('port'), () => {
     console.log('Servidor inicializado en localhost ', process.env.PORT, ' correctamente');
 });
 
-app.get('*', (req, res) => {
-    res.redirect('error');
-});
-
 module.exports = app;

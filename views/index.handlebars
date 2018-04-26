@@ -1,1 +1,157 @@
-<h1>Welcome</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <table class="table table-condensed borderless">
+                <thead class="head">
+                    <tr>
+                        <th colspan="4" class="tableTitle">Calculator</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td width="25%">Weight of the animal:</td>
+                        <td width="15%" style="min-width: 100px !important;">
+                            <input type="number" class="form-control simplebox" id="weight">
+                        </td>
+                        <td width="25%">Kg</td>
+                        <td rowspan="2" width="35%">
+                            <div id="infoBox">
+                                <label>Registered dosage:<br />Dogs: 5 mg/kg sid<br />Cats: 7 mg/kg sid</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Dose of ciclosporine:</td>
+                        <td>
+                            <input type="number" class="form-control simplebox" id="doseInput">
+                        </td>
+                        <td>mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="padding: 5px 5px 5px 5px!important; text-align: center;">
+                            <button id="calculateBtn" class="btn btn-sm btn-primary myBtn" type="button">Calculate</button>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Dose in ml:</td>
+                        <td>
+                            <input id="doseResult" type="number" class="form-control inputDis simplebox" disabled>
+                        </td>
+                        <td colspan="2">ml Atopica 100 mg/ml oral solution for cats and dogs</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <table class="table table-condensed borderless">
+                <thead class="head">
+                    <tr>
+                        <th colspan="6" class="tableTitle">Info table</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td height="10" colspan="6"></td>
+                    </tr>
+                    <tr>
+                        <td height="15" colspan="2" class="secondCol"></td>
+                        <td colspan="3" class="colTitle fifthCol" style="padding-top: 0;">Reach in days when treating…</td>
+                        <td></td>
+                    </tr>
+                    <tr id="secondRow">
+                        <td colspan="2" class="colTitle secondCol">Size of bottle</td>
+                        <td class="colTitle thirdCol">…daily</td>
+                        <td class="colTitle fourthCol">…every 2nd day</td>
+                        <td class="colTitle fifthCol">…twice a week</td>
+                        <td class="colTitle">in-use stability</td>
+                    </tr>
+                    <tr>
+                        <td width="22%">Atopica 100 mg/ml</td>
+                        <td width="9%" class="secondCol">5 ml</td>
+                        <td width="17%" class="thirdCol">
+                            <div id="cell33">
+                                <input type="number" class="form-control inputDis simplebox" disabled>
+                            </div>
+                        </td>
+                        <td width="17%" class="fourthCol">
+                            <div id="cell34">
+                                <input type="number" class="form-control inputDis simplebox" disabled>
+                            </div>
+                        </td>
+                        <td width="17%" class="fifthCol">
+                            <div id="cell35">
+                                <input type="number" class="form-control inputDis simplebox" disabled>
+                            </div>
+                        </td>
+                        <td width="18%">
+                            <input type="text" class="form-control inputDis simplebox" value="70 days" disabled>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Atopica 100 mg/ml</td>
+                        <td class="secondCol">17 ml</td>
+                        <td class="thirdCol">
+                            <div id="cell43">
+                                <input type="number" class="form-control inputDis simplebox" disabled>
+                            </div>
+                        </td>
+                        <td class="fourthCol">
+                            <div id="cell44">
+                                <input type="number" class="form-control inputDis simplebox" disabled>
+                            </div>
+                        </td>
+                        <td class="fifthCol">
+                            <div id="cell45">
+                                <input type="number" class="form-control inputDis simplebox" disabled>
+                            </div>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control inputDis simplebox" value="70 days" disabled>
+                        </td>
+                    </tr>
+                    <tr id="fifthRow">
+                        <td>Atopica 100 mg/ml</td>
+                        <td class="secondCol">50 ml</td>
+                        <td class="thirdCol">
+                            <div id="cell53">
+                                <input type="number" class="form-control inputDis simplebox" disabled>
+                            </div>
+                        </td>
+                        <td class="fourthCol">
+                            <div id="cell54">
+                                <input type="number" class="form-control inputDis simplebox" disabled>
+                            </div>
+                        </td>
+                        <td class="fifthCol">
+                            <div id="cell55">
+                                <input type="number" class="form-control inputDis simplebox" disabled>
+                            </div>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control inputDis simplebox" value="84 days" disabled>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="lastRow" height="10" colspan="6"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" id="sixthRow">
+                            <label><i class="fas fa-square-full" style="color: #d3d428"></i> In-use stability sufficient<br>
+                            <i class="fas fa-square-full" style="color: #d2232a"></i> In-use stability insufficient - Atopica solution would have to be discarded</label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

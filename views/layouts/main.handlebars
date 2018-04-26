@@ -1,12 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Calculator</title>
+    <script src="http://code.jquery.com/jquery-3.3.1.slim.js" integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA="
+        crossorigin="anonymous"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
+        crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="/styles.css">
+
+    <!-- MARKED JS -->
+    <script src="/angular.js"></script>
+    <script src="/marked.js"></script>
+    <script src="/angular-marked.js"></script>
+    <script src="/app.js"></script>
+    <!-- //MARKED JS -->
 </head>
+
 <body>
-    {{{body}}}
+
+    <div id="body">
+        {{{body}}}
+    </div>
+
+    {{>weightModal}} {{>doseModal}} {{>resultModal}}
+
+    <script>
+        $('#weight').on("focusout", () => {
+            var value = $('#weight').val();
+            if (Math.floor(value) != value) {
+                value = restrictDecimals(value, 1);
+            }
+            $('#weight').val(value);
+
+            if (Math.floor(value) < 2) {
+                $('#weightAlert').modal('show');
+            }
+            else {
+                checkingBothInputs();
+            }
+        });
+
+        $('#doseInput').on("focusout", () => {
+            var value = $('#doseInput').val();
+            if (Math.floor(value) != value) {
+                value = restrictDecimals(value, 1);
+            }
+            $('#doseInput').val(value);
+
+            if (Math.floor(value) < 5 || Math.floor(value) > 7) {
+                $('#doseAlert').modal('show');
+            }
+            else {
+                checkingBothInputs();
+            }
+        });
+
+        $('#calculateBtn').on("click", function () {
+            if ($('#doseInput').val() != "" && $('#weight').val() != "") {
+                var value = $('#weight').val() * $('#doseInput').val() / 100;
+
+                if (Math.floor(value) != value) {
+                    $('#doseResult').val(restrictDecimals(value, 2));
+                }
+                else {
+                    $('#doseResult').val(value);
+                }
+
+                // FILA 1
+                var cell33 = 500 / ($('#weight').val() * $('#doseInput').val());
+                cell33 = Math.floor(cell33);
+                if (cell33 > 70) { $('#cell33 input').attr('style', 'color: white !important; background-color: #d2232a !important;'); }
+                else { $('#cell33 input').attr('style', 'color: #372f80 !important; background-color: #d3d428 !important;'); }
+                $('#cell33 input').val(cell33);
+
+                var cell34 = Math.floor(cell33 * 2);
+                if (cell34 > 70) { $('#cell34 input').attr('style', 'color: white !important; background-color: #d2232a !important;'); }
+                else { $('#cell34 input').attr('style', 'color: #372f80 !important; background-color: #d3d428 !important;'); }
+                $('#cell34 input').val(cell34);
+
+                var cell35 = Math.floor(cell33 * 3.5);
+                if (cell35 > 70) { $('#cell35 input').attr('style', 'color: white !important; background-color: #d2232a !important;'); }
+                else { $('#cell35 input').attr('style', 'color: #372f80 !important; background-color: #d3d428 !important;'); }
+                $('#cell35 input').val(cell35);
+
+                // FILA 2
+                var cell43 = 1700 / ($('#weight').val() * $('#doseInput').val());
+                cell43 = Math.floor(cell43);
+                if (cell43 > 70) { $('#cell43 input').attr('style', 'color: white !important; background-color: #d2232a !important;'); }
+                else { $('#cell43 input').attr('style', 'color: #372f80 !important; background-color: #d3d428 !important;'); }
+                $('#cell43 input').val(cell43);
+
+                var cell44 = Math.floor(cell43 * 2);
+                if (cell44 > 70) { $('#cell44 input').attr('style', 'color: white !important; background-color: #d2232a !important;'); }
+                else { $('#cell44 input').attr('style', 'color: #372f80 !important; background-color: #d3d428 !important;'); }
+                $('#cell44 input').val(cell44);
+
+                var cell45 = Math.floor(cell43 * 3.5);
+                if (cell45 > 70) { $('#cell45 input').attr('style', 'color: white !important; background-color: #d2232a !important;'); }
+                else { $('#cell45 input').attr('style', 'color: #372f80 !important; background-color: #d3d428 !important;'); }
+                $('#cell45 input').val(cell45);
+
+                // FILA 3
+                var cell53 = 5000 / ($('#weight').val() * $('#doseInput').val());
+                cell53 = Math.floor(cell53);
+                if (cell53 > 84) { $('#cell53 input').attr('style', 'color: white !important; background-color: #d2232a !important;'); }
+                else { $('#cell53 input').attr('style', 'color: #372f80 !important; background-color: #d3d428 !important;'); }
+                $('#cell53 input').val(cell53);
+
+                var cell54 = Math.floor(cell53 * 2);
+                if (cell54 > 84) { $('#cell54 input').attr('style', 'color: white !important; background-color: #d2232a !important;'); }
+                else { $('#cell54 input').attr('style', 'color: #372f80 !important; background-color: #d3d428 !important;'); }
+                $('#cell54 input').val(cell54);
+
+                var cell55 = Math.floor(cell53 * 3.5);
+                if (cell55 > 84) { $('#cell55 input').attr('style', 'color: white !important; background-color: #d2232a !important;'); }
+                else { $('#cell55 input').attr('style', 'color: #372f80 !important; background-color: #d3d428 !important;'); }
+                $('#cell55 input').val(cell55);
+            }
+        });
+
+        function restrictDecimals(value, numDec) {
+            var wholeNum = value.toString().split('.')[0]; // Parte entera
+            var decimals = value.toString().split('.')[1]; // Parte decimal
+            var decimals = decimals.substring(0, numDec);
+            return (wholeNum + '.' + decimals);
+        }
+
+        $('#doseZuruckBtn').click( ()=>{ $('#doseInput').val('') });
+        $('#weightZuruckBtn').click( ()=>{ $('#weight').val('') });
+
+        function checkingBothInputs() {
+            var a = $('#doseInput').val();
+            var b = $('#weight').val();
+            if ($('#doseInput').val() != "" && $('#weight').val() != "" &&
+                ((Math.floor($('#doseInput').val()) > 7 || Math.floor($('#doseInput').val()) < 5) ||
+                    Math.floor($('#weight').val()) < 2)) {
+                $('#resultAlert').modal('show');
+            }
+        }
+
+        $('#resultZuruckBtn').click( ()=>{
+            $('#doseInput').val('');
+            $('#weight').val('');
+        });
+    </script>
+
 </body>
+
 </html>
